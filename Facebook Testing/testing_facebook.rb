@@ -32,6 +32,7 @@ class TestFacebookpage < Test::Unit::TestCase
 		assert_not_equal(false, @driver.find_element(:link => "Forgot account?").displayed?)
 
 
+		puts "Entering Username and password: "
 
 		arr = Array.new
 		fileline = File.open("selenium.txt", "r+") 
@@ -41,24 +42,21 @@ class TestFacebookpage < Test::Unit::TestCase
 
 		@driver.find_element(:id, "email").send_keys "#{arr[0]}"
 		username = @driver.find_element(:id, "email").attribute("value")
-		
-		expected_username = "ranjanisri@ymail.com"
-		assert_equal(username,expected_username)
 
-		expected_username = "abcd@ymail.com"
+		expected_username = "1234Test"
 		assert_not_equal(username,expected_username)
+		puts "Incorrect UserName: #{expected_username}"
 
-
+		
 		@driver.find_element(:id, "pass").send_keys "#{arr[1]}"
 		password = @driver.find_element(:id, "pass").attribute("value")
-
-		expected_password = "1234Test"
-		assert_equal(password,expected_password)
 		
 		expected_password = "qwerty"
 		assert_not_equal(password,expected_password)
+		puts "Incorrect Password: #{expected_password}"
+
 		
-		#@driver.find_element(:id, "loginbutton").click
+		@driver.find_element(:id, "loginbutton").click
 		#@driver.find_element(:id, "userNavigationLabel").click
 		#@driver.find_element(:link, "Log Out").click
 		
