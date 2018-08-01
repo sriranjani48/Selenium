@@ -3,38 +3,49 @@ require "selenium-webdriver"
 require "test/unit"
 
 class TestFacebookpage < Test::Unit::TestCase
+	
 	def setup
 		caps = Selenium::WebDriver::Remote::Capabilities.firefox
 		@driver = Selenium::WebDriver.for :remote, desired_capabilities: caps, url: "http://127.0.0.1:4444"
 		@driver.get("https://www.facebook.com/")
 	end
 	
-	def test_loginpage
-
-		#assert(@driver.page_source.include?("facebook"),"Assertion Failed")
-		assert_equal(@driver.title, "Facebook - Log In or Sign Up")
-		assert_not_equal(@driver.title, "Hello_world")
-
-
-		assert_equal(true, @driver.find_element(:id => "email").displayed?)
-		assert_not_equal(false, @driver.find_element(:id => "email").displayed?)
+	def test_facebook_page
+		test_titleof_Facebook_LoginPage_Equal("Facebook - Log In or Sign Up")
+		test_titleof_Facebook_LoginPage_Not_Equal("Google")
 		
+		test_titleof_Facebook_LoginPage_afterClicking_loginButton_Equal("Log into Facebook | Facebook")
+		test_titleof_Facebook_LoginPage_afterClicking_loginButton_notEqual("Home Page")
+		
+		test_giving_false_information("Log into Facebook | Facebook")
 
-		assert_equal(true, @driver.find_element(:id => "pass").displayed?)
-		assert_not_equal(false, @driver.find_element(:id => "pass").displayed?)
+		test_recover_account_link("Forgot Password | Can't Log In | Facebook")
 
+		test_recover_account("Forgot Password | Can't Log In | Facebook")
 
-		assert_equal(true, @driver.find_element(:id => "loginbutton").displayed?)
-		assert_not_equal(false, @driver.find_element(:id => "loginbutton").displayed?)
+		test_opening_signup_page("Sign Up for Facebook | Facebook")
+	end
 
+	def test_titleof_Facebook_LoginPage_Equal(expected_title)
+		#assert(@driver.page_source.include?("facebook"),"Assertion Failed")
+		assert_equal(@driver.title, expected_title)
+	end
+	def test_titleof_Facebook_LoginPage_Not_Equal(expected_title)
+		assert_not_equal(@driver.title, expected_title)
+	end
+	
+	def test_titleof_Facebook_LoginPage_afterClicking_loginButton_Equal(expected_title)		
+		if @driver.find_element(:id => "loginbutton").displayed?
+			@driver.find_element(:id, "loginbutton").click
+			puts "No Username and Password are entered"
+			assert_equal(@driver.title, expected_title)
+		end
+	end
+	def test_titleof_Facebook_LoginPage_afterClicking_loginButton_notEqual(expected_title)		
+		assert_not_equal(@driver.title, expected_title)
+	end
 
-		assert_equal(true, @driver.find_element(:link => "Forgot account?").displayed?)
-		assert_not_equal(false, @driver.find_element(:link => "Forgot account?").displayed?)
-
-		login = @driver.find_element(:id, "loginbutton").click
-		puts "No Username and Password are entered"
-
-
+	def test_giving_false_information(expected_title)
 		puts "Entering Username and password: "
 
 		arr = Array.new
@@ -44,58 +55,41 @@ class TestFacebookpage < Test::Unit::TestCase
 		end
 
 		@driver.find_element(:id, "email").send_keys "#{arr[0]}"
-		username = @driver.find_element(:id, "email").attribute("value")
-		
 		@driver.find_element(:id, "pass").send_keys "#{arr[1]}"
-		password = @driver.find_element(:id, "pass").attribute("value")
+		@driver.find_element(:id, "loginbutton").click
+
+		assert_equal(@driver.title, expected_title)
 		
-		login = @driver.find_element(:id, "loginbutton")
-		login.submit
-
-
-		expected_username = "abcdefg"
-		assert_not_equal(username,expected_username)
-
-		expected_password = "000999"
-		assert_not_equal(password,expected_password)
-
 		puts "Failure in Logging In: Incorrect UserName and Password"
-
-		puts "Re-enetr Username and Password Or SignUp"
-
-		expected_username = "ranjanisri@ymail.com"
-		expected_password = "1234Test"
-		assert_equal(username,expected_username)
-		assert_equal(password,expected_password)
-
-		login = @driver.find_element(:id, "loginbutton").click
-		puts "No such Account exists"
 		puts "Recover your Account Or SignUp"
+	end
 
-		assert_equal(true, @driver.find_element(:link, "Recover Your Account").displayed?)
-		@driver.find_element(:link, "Recover Your Account").click
-		
-		assert_equal(@driver.title, "Forgot Password | Can't Log In | Facebook")
-		
-		puts "Recovering My Account...."
-		
-		assert_equal(true, @driver.find_element(:id, "did_submit").displayed?)
-		@driver.find_element(:id, "did_submit").click
-		
-		
-		puts "Please fill in the field"
-		
-		search = @driver.find_element(:id, "identify_email")
-		@driver.action.click(search).perform
-		
-		@driver.find_element(:id, "identify_email").send_keys "ranjanisri@ymail.com"
-		
-		@driver.find_element(:id, "did_submit").click
-		puts "No Search Results. Please try again with other information."
+	def test_recover_account_link(expected_title)
+		if @driver.find_element(:link, "Recover Your Account").displayed?
+			@driver.find_element(:link, "Recover Your Account").click
+			assert_equal(@driver.title, expected_title)
+		end
+	end
 
-		#@driver.find_element(:id, "userNavigationLabel").click
-		#@driver.find_element(:link, "Log Out").click
+	def test_recover_account(expected_title)
+		if @driver.find_element(:id, "did_submit").displayed?
+			@driver.find_element(:id, "did_submit").click	
+			assert_equal(@driver.title, expected_title)	
+		end
+		puts "Recovering account Failed"
+	end
 		
-		#@driver.quit
+	def test_opening_signup_page(expected_title)
+		if @driver.find_element(:class, "uiButtonText").displayed?
+			@driver.find_element(:class, "uiButtonText").click
+		end
+		
+		if @driver.find_element(:link_text, "Create New Account").displayed?
+			@driver.find_element(:link_text, "Create New Account").click
+			assert_equal(@driver.title, expected_title)
+		end
+		puts "Sign up for Facebook"
 	end
 end
+	 
+		
