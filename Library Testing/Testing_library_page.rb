@@ -14,7 +14,7 @@ class TestLibraryPage < Test::Unit::TestCase
 		@driver.quit
 	end
 
-	def test_case1_page_title_should_return_true
+	def test_case1_page_title_should_return_Google
 		puts "Opening Google from firefox"
 		expected_title = "Google"
 		assert_equal(@driver.title, expected_title)
@@ -22,7 +22,7 @@ class TestLibraryPage < Test::Unit::TestCase
 		
 	end
 
-	def test_case2_content_search_should_return_true
+	def test_case2_content_search_value_should_return_Maple_Ridge_Library
 		puts "Searching for Maple Ridge Library"
 		@driver.find_element(:name, "q").send_keys "Maple Ridge Library"
 		actual_search = @driver.find_element(:name, "q").attribute("value")
@@ -30,11 +30,10 @@ class TestLibraryPage < Test::Unit::TestCase
 		expected_search = "Maple Ridge Library"
 		assert_equal(actual_search, expected_search)
 		puts "Searching content are equal"	
-		#sleep(5)
 
 	end
 
-	def test_case3_opening_library_page_should_return_true
+	def test_case3_library_Home_page_title_should_return_Fraser_Valley_Regional_Library
 		puts "Opening the Library Homepage"
 		@driver.find_element(:name, "q").send_keys "Maple Ridge Library"
 		@driver.find_element(:name, "btnK").click
@@ -43,7 +42,7 @@ class TestLibraryPage < Test::Unit::TestCase
 		expected_title = "Fraser Valley Regional Library"
 		assert_equal(@driver.title, expected_title)
 		puts "Titles are equal"	
-		#sleep(5)
+		
 
 	end
 	
@@ -62,7 +61,7 @@ class TestLibraryPage < Test::Unit::TestCase
 		puts "Titles are equal"	
 	end
 
-	def test_case5_login_page
+	def test_case5_login_page_title_should_return_Log_In_Fraser_Valley_Regional_Library_BiblioCommons"
 		@driver.find_element(:name, "q").send_keys "Maple Ridge Library"
 		@driver.find_element(:name, "btnK").click
 		@driver.find_element(:partial_link_text, "Library").click
