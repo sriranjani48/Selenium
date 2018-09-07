@@ -88,6 +88,4 @@ class AmazonWebsite
 end
 
 #sample = AmazonWebsite.new
-#sample.title_of_the_adding_to_cart_page("21 Lessons for the 21st Century: Yuval Noah Harari: 9780525512172: Amazon.com: Books")
-#sample.signin_account
 #sample.title_of_the_signin_account_page("Amazon Sign In")
