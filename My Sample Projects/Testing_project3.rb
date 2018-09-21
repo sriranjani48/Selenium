@@ -28,6 +28,9 @@ driver.find_element(:id, "datepicker").send_keys "30/8/2018"
 
 driver.find_element(:id, "profession-1").click
 
+driver.find_element(:id, "/html/body/div[1]/div[5]/div[2]/div/div/div[1]/div/div/div/div[2]/div/form/fieldset/div[22]").click
+
+
 driver.find_element(:id, "tool-2").click
 
 driver.find_element(:name, "continents").find_element(:xpath, "/html/body/div[1]/div[5]/div[2]/div/div/div[1]/div/div/div/div[2]/div/form/fieldset/div[31]/div[1]/select/option[2]").click
@@ -35,4 +38,4 @@ sleep(2)
 
 driver.find_element(:name, "selenium_commands").find_element(:xpath, "/html/body/div[1]/div[5]/div[2]/div/div/div[1]/div/div/div/div[2]/div/form/fieldset/div[32]/div/select/option[2]").click
 sleep(2)
-driver.find_element(:name, "submit").click
+#driver.find_element(:name, "submit").click

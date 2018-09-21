@@ -1,0 +1,102 @@
+{
+  "id": "9b2e5388-7611-4175-aff0-661123983c2b",
+  "version": "1.1",
+  "name": "Untitled Project",
+  "url": "http://demo.guru99.com",
+  "tests": [{
+    "id": "fd6bb058-a863-4efd-844d-39c0c5291f96",
+    "name": "Untitled",
+    "commands": [{
+      "id": "c263c9b8-8045-4463-92f8-48b51f12edc2",
+      "comment": "",
+      "command": "open",
+      "target": "/test/newtours/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "efb7cb74-8e0f-4e93-a2ea-e433e8ac87a8",
+      "comment": "",
+      "command": "assertTitle",
+      "target": "Welcome: Mercury Tours",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0fb9bf8d-6a75-45b9-addd-4f7a92cf6d04",
+      "comment": "",
+      "command": "click",
+      "target": "name=userName",
+      "targets": [
+        ["name=userName", "name"],
+        ["css=input[name=\"userName\"]", "css"],
+        ["xpath=//input[@name='userName']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2b23c954-df43-44be-9aac-569b647566ab",
+      "comment": "",
+      "command": "click",
+      "target": "name=userName",
+      "targets": [
+        ["name=userName", "name"],
+        ["css=input[name=\"userName\"]", "css"],
+        ["xpath=//input[@name='userName']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e04afce7-624d-4861-9115-9977084441a9",
+      "comment": "",
+      "command": "type",
+      "target": "name=userName",
+      "targets": [
+        ["name=userName", "name"],
+        ["css=input[name=\"userName\"]", "css"],
+        ["xpath=//input[@name='userName']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "ABCD"
+    }, {
+      "id": "bf69653f-bea1-4ff2-8bd2-12c9ac0cba5b",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=input[name=\"password\"]", "css"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "84c5c8a2-a91d-4ef8-b0a2-66191cb94cc7",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=input[name=\"password\"]", "css"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": "qwerty"
+    }, {
+      "id": "f74e8e95-c98b-413c-8c82-6274feca52e4",
+      "comment": "",
+      "command": "submit",
+      "target": "name=home",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "28cfcb18-8a87-434e-9784-475a3cdb6c78",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["fd6bb058-a863-4efd-844d-39c0c5291f96"]
+  }],
+  "urls": ["http://demo.guru99.com/"],
+  "plugins": []
+}

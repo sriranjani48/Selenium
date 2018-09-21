@@ -1,0 +1,77 @@
+{
+  "id": "619c68e0-1966-4fa9-9289-186edfcf7ebd",
+  "version": "1.1",
+  "name": "Project First ",
+  "url": " http://demo.guru99.com/test/newtours/",
+  "tests": [{
+    "id": "a32f553c-d56d-4e09-ae76-09353dcf91a6",
+    "name": "TestCase1",
+    "commands": [{
+      "id": "35e598ea-9983-4b9f-bff9-5ba04f87494d",
+      "comment": "",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bb6fd973-5fdd-462b-80e3-51f8b572b74e",
+      "comment": "",
+      "command": "assertTitle",
+      "target": "Welcome: Mercury Tours",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0a812bea-0128-4aac-983c-f50794531c2f",
+      "comment": "",
+      "command": "type",
+      "target": "name=userName",
+      "targets": [],
+      "value": "ABCDE"
+    }, {
+      "id": "bc385f0a-7fe2-416c-9d1c-c51f6cd2efd3",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [],
+      "value": "zxcvbnm"
+    }, {
+      "id": "a94a1b13-ef54-4471-b472-fa3e32ce94bc",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a435da1f-8492-4032-a786-42512b571bda",
+      "comment": "",
+      "command": "verifyTitle",
+      "target": "Welcome: Mercury Tours",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "afa36672-d6de-4d02-85dd-b9133b363490",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=REGISTER",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f8290112-f95e-452d-946b-8725d0a767fa",
+      "comment": "",
+      "command": "verifyTitle",
+      "target": "Register: Mercury Tours",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "404ec432-081c-4a4e-8f42-26ffbc9d258c",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["a32f553c-d56d-4e09-ae76-09353dcf91a6"]
+  }],
+  "urls": ["http://demo.guru99.com/test/newtours/"],
+  "plugins": []
+}
